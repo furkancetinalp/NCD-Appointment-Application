@@ -3,17 +3,31 @@
   "version": "0.0.1",
   "description": "Start with a basic project",
   "scripts": {
-    "dev": "watch -d -n 1 'clear && yarn test'",
-    "test": "yarn asp -f unit.spec",
-    "clean": "rm -rf ./build && rm -rf ./neardev",
-    "build": "asb --target debug",
     "build:release": "asb",
-    "asp": "asp --verbose --nologo"
+    "deploy": "near dev-deploy build/release/NCD-Appointment-Application.wasm",
+    "dev": "yarn build:release && yarn deploy",
+    "test": "asp"
   },
   "keywords": [],
   "author": "hello@near.org",
   "license": "ISC",
   "devDependencies": {
-    "near-sdk-as": "^3.1.0"
+    "near-sdk-as": "^3.2.3",
+    "assemblyscript": "^0.20.4"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/furkancetinalp/NCD-Appointment-Application.git",
+  "dependencies": {
+    "@assemblyscript/loader": "^0.20.4",
+    "asbuild": "^0.2.0",
+    "assemblyscript": "^0.20.4",
+    "near-cli": "^3.2.0"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
   }
 }
