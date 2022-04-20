@@ -4,7 +4,7 @@
   "description": "Start with a basic project",
   "scripts": {
     "build:release": "asb",
-    "deploy": "near dev-deploy build/release/NCD-Appointment-Application.wasm",
+    "deploy": "near dev-deploy build/release/starter--near-sdk-as.wasm",
     "dev": "yarn build:release && yarn deploy",
     "test": "asp"
   },
